@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title> Search Jobs Form </title>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <link rel="stylesheet" href="CSS File.css">
+
+</head>
+
+<body>
+    <!--Adding the name of the web page-->  
+    <h1> WorkNet <img src="graduation_Hat.png" alt="graduation_Hat_Logo" width="45" height="30"> </h1> <hr>
+
+    <h2> Search jobs </h2>
+
+    <div class="search_Criteria">
+        <form name="search_Jobs_Form" action="search_Jobs.php" method="post" required>   
+        
+        <div class="group">
+        <label for="search_Term"> Search: </label> 
+        <input type="text" name="search_Term" id="search_Term" required> 
+        </div>
+
+        <!--Adding the Submit button to the Search Jobs Form-->
+        <input type="submit" id="submit_Button" name="submit_Button" value="Search">  
+        
+        <!--Adding an image to the Search Jobs page-->
+        <img src="home_Page_Image.jpeg" alt="home_Background" width="700" height="500" style="float: right;" class="large_Image">
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title> Sign Up Form </title>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <link rel="stylesheet" href="CSS File.css">
+
+</head>
+
+<body>
+    <!--Adding the name of the web page-->  
+    <h1> WorkNet <img src="graduation_Hat.png" alt="graduation_Hat_Logo" width="45" height="30"> </h1> <hr>
+
+    <h2> Sign up to WorkNet </h2>
+
+    <div class="search_Criteria">
+        <form name="student_Registration_Form" action="enter_Student_Data.php" onsubmit="return validate_Empty_Fields()" method="post" required>   
+        
+        <div class="group">
+        <label for="email"> Email: </label> 
+        <input type="email" name="email" id="email" required> 
+        </div>
+
+        <div class="group">
+        <label for="password"> Password: </label> 
+        <input type="password" name="password" id="password" required> 
+        </div>
+
+        <!--Adding the Submit button to the Sign Up Form-->
+        <input type="submit" id="submit_Button" name="submit_Button" value="Sign up">  
+        
+        <!--Adding an image to the Student Registration page-->
+        <img src="home_Page_Image.jpeg" alt="home_Background" width="700" height="500" style="float: right;" class="large_Image">
+
+        </form>
+    </div>
+
+    <script>
+        function validate_Empty_Fields()
+            {
+            let first_Name = document.forms["student_Registration_Form"]["first_Name"].value;  
+            let last_Name = document.forms["student_Registration_Form"]["last_Name"].value;  
+            let date_Of_Birth = document.forms["student_Registration_Form"]["date_Of_Birth"].value;  
+            let address = document.forms["student_Registration_Form"]["address"].value; 
+            let course_Registered = document.forms["student_Registration_Form"]["course_Registered"].value;  
+            
+            if ((first_Name == "") || (last_Name == "") || (date_Of_Birth == "") || (address == "") || (course_Registered == ""))
+                {
+                alert("Mandatory fields are empty"); 
+                return false;
+                }
+            }
+        
+    </script>
+</body>
+</html>

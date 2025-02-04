@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title> Post Task Form </title>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <link rel="stylesheet" href="CSS File.css">
+
+</head>
+
+<body>
+    <!--Adding the name of the web page-->  
+    <h1> WorkNet <img src="graduation_Hat.png" alt="graduation_Hat_Logo" width="45" height="30"> </h1> <hr>
+
+    <h2> Let's start posting a task </h2>
+
+    <div class="search_Criteria">
+        <form name="post_Task_Form" action="post_Task.php" method="post" required>   
+        
+        <div class="group">
+        <label for="task_Name"> Task Name </label> 
+        <input type="text" name="task_Name" id="task_Name" required> 
+        </div>
+
+        <div class="group">
+        <label for="date"> Date </label> 
+        <input type="date" name="date" id="date" required> 
+        </div>
+
+        <div class="group">
+        <label for="location"> Location </label> 
+        <input type="text" name="location" id="location" required> 
+        </div>
+
+        <div class="group">
+        <label for="details"> Details </label> 
+        <input type="text" name="details" id="details" required> 
+        </div>
+
+        <div class="group">
+        <label for="payment_Amount"> Payment Amount </label> 
+        <input type="number" name="payment_Amount" id="payment_Amount" required> 
+        </div>
+
+        <!--Adding the Submit button to the Post Task Form-->
+        <input type="submit" id="submit_Button" name="submit_Button" value="Post Task">  
+        
+        <!--Adding an image to the Post Task page-->
+        <img src="home_Page_Image.jpeg" alt="home_Background" width="700" height="500" style="float: right;" class="large_Image">
+
+        </form>
+    </div>
+</body>
+</html>
