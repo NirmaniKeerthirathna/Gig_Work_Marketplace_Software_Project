@@ -1,0 +1,121 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  }
+  
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #007BFF;
+    width: 100%;
+  }
+  
+nav ul li {
+    margin: 15px;
+    display: inline;
+    justify-content: space-around;
+  }
+  
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0;
+    background-color: #007BFF;
+    border-radius: 10px;
+    display: block;
+  }
+  
+nav ul li a:hover {
+    background-color: #007BFF;
+  }
+
+nav hr {
+  border: 0;
+  height: 1px;
+  background-color: black;
+  margin-top: 10px;
+  }  
+
+.home_page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  }
+
+.tag_line {
+  display: grid;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xx-large;
+  text-align: center;
+  color: blue;
+  width: 50%;
+  }
+
+.image {
+  width: 50%;
+  text-align: right;
+  }
+
+.image img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+.workers_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.worker_card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+}
+
+.star {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star.filled {
+    color: gold;
+}
+
+.comment {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+form {
+    margin: 20px;
+  }
+  
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    margin-bottom: 10px;
+  }
+  
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+ 
+  

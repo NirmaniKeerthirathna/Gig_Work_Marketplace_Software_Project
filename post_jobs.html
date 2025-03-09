@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Post a Job</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+  <form action="post_jobs.php" method="POST">
+
+    Job Title: <input type="text" name="job_title" required><br>
+    Job Description: <textarea name="job_description" required></textarea><br>
+    Category: <select name = "category_name" id = "category_name" required>
+    <option value = "admin"> Admin </option>
+    <option value = "baby_care"> Baby Care </option>
+    <option value = "delivery"> Delivery </option>
+    <option value = "gardening_&_landscaping"> Gardening & Landscaping </option>
+    <option value = "home_cleaning"> Home Cleaning </option>
+    <option value = "handyman_services"> Handyman Services </option>
+    <option value = "personal_assistance"> Personal Assistance </option>
+    <option value = "tutoring"> Tutoring </option>
+    </select> <br>
+    Rate: <input type="number" name="rate" id = "rate" required><br>
+    Start Date: <input type="date" name="start_date" id="start_date" required></textarea><br>
+    End Date: <input type="date" name="end_date" id="end_date" required></textarea><br>
+
+    <input type="submit" value="Post Job">
+
+  </form>
+
+</body>
+
+</html>
+ 
