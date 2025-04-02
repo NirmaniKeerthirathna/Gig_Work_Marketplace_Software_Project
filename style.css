@@ -1,11 +1,14 @@
 body {
-  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f4f4f4;
+  height: 75vh;
   margin: 0;
-  }
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
   
 nav ul {
     list-style-type: none;
@@ -68,6 +71,164 @@ nav hr {
     border-radius: 10px;
   }
 
+.sign-up-container, .log-in-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: medium;
+}
+
+.post-job-container {
+  display: flex;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input, select {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.gig_worker_fields {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.left-pane {
+  width: 25%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.left-pane ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.left-pane li {
+  padding: 10px;
+  color: blue;
+}
+
+.left-pane li.active {
+  font-weight: bold;
+}
+
+.right-pane {
+  width: 75%;
+  padding: 20px;
+}
+
+.sections {
+  display: none;
+}
+
+.sections.active {
+  display: block;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.toast-message {
+  visibility: hidden;
+  min-width: 250px;
+  margin-top: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+}
+
+.toast-message.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.hidden {
+  display: none;
+}
+
+  .input-box {
+    margin-bottom: 15px;
+  }
+  
+  .input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .input-box input::placeholder {
+    color: #999;
+  }
+  
+
+  .search-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .apply-for-job-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
 .workers_list {
     display: flex;
     flex-wrap: wrap;
@@ -102,20 +263,5 @@ nav hr {
     color: #333;
 }
 
-form {
-    margin: 20px;
-  }
-  
-input[type="text"], input[type="email"], input[type="password"], textarea {
-    margin-bottom: 10px;
-  }
-  
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
  
   
