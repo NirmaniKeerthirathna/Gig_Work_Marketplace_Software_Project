@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+
+    <title> Add Job Category </title>
+
+    <link rel = "stylesheet" href = "add_job_categories_style.css">
+
+</head>
+
+<body>
+
+    <div class = "add-job-category-container">    
+        <h2> Add Job Category </h2>
+        
+        <form id = "add-job-category-form" action = "add_job_categories.php" method = "POST">   
+            <input type = "text" name = "category_name" placeholder = "Category Name" required>
+            <button type = "submit"> Add Category </button>
+        </form>   
+        
+        <div id = "toast-message" class = "toast-message"> Job category added successfully </div>
+    </div>
+
+    <script> 
+    document.getElementById('add-job-category-form').addEventListener('submit', function(event) 
+        {
+            event.preventDefault();
+            document.getElementById('toast-message').classList.add('show');
+            setTimeout(function() 
+            {
+                document.getElementById('toast-message').classList.remove('show');
+            }, 3000);
+        }
+        );
+    </script> 
+
+</body>
+
+</html>
