@@ -1,64 +1,50 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title> Post a Job </title>
-
-    <link rel="stylesheet" href="style.css">    
-
-    <script src="scripts.js"></script>
-
+    <title>Post a Task</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class = "post-job-container">
+    <div class="container">
         <div class="left-pane">
-        <h2> Post a Job </h2>
-        <ul id = "sections">
-            <li class="active"> Job Title & Date </li>  
-            <li> Location </li>  
-            <li> Job Description </li> 
-            <li> Payment </li>    
-        </ul>
-        </div> 
-        
+            <h2>Post a Task</h2>
+            <ul id="sections">
+                <li class="active">Title & Date</li>
+                <li>Location</li>
+                <li>Details</li>
+                <li>Payment</li>
+            </ul>
+        </div>
         <div class="right-pane">
-        <form id = "job-form" action="post_job.php" method="POST">
-            <div class = "section" id = "title-and-date"> 
-            <input type="text" name="title" placeholder="Job Title" required>
-            <input type="date" name="date" placeholder="Date" required>
-            <button type="button" onclick="nextSection()"> Next </button>
-            </div>
-
-            </div class = "section" id = "location" style = "display:none;">
-            <input type = "text" name = "location" placeholder="Location" required>
-            <button type="button" onclick="nextSection()"> Next </button>
-            </div>
-
-            </div class = "section" id = "job-description" style = "display:none;">
-            <textarea name="job-description" placeholder="Job Description" required></textarea>
-            <button type="button" onclick="nextSection()"> Next </button>
-            </div>
-            
-            <div class="section" id = "payment" style = "display:none;">
-                <input type="number" name = "payment" placeholder="Payment" required>
-                <button type = "submit"> Post Job </button>
-            </div>
-        </form>
+            <form id="taskForm">
+                <div class="section active" id="title-date">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                    <button type="button" onclick="nextSection()">Next</button>
+                </div>
+                <div class="section" id="location">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                    <button type="button" onclick="nextSection()">Next</button>
+                </div>
+                <div class="section" id="details">
+                    <label for="details">Details:</label>
+                    <textarea id="details" name="details" required></textarea>
+                    <button type="button" onclick="nextSection()">Next</button>
+                </div>
+                <div class="section" id="payment">
+                    <label for="payment">Payment:</label>
+                    <input type="number" id="payment" name="payment" required>
+                    <button type="submit">Post Job</button>
+                </div>
+            </form>
         </div>
     </div>
-
-    <script>
-       let current_section = 0;
-       const sections = document.querySelectorAll ('.section');
-       const section_titles = document.querySelectorAll ('#sections li'); 
-
-
-    </script>
+    <div id="toast" class="toast">Task posted successfully!</div>
+    <script src="scripts.js"></script>
 </body>
-
 </html>
