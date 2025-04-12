@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Sign Up to WorkNet </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sign-up-container">
+    <h2> Sign Up to WorkNet </h2>
+    <form id="sign-up-form" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+    
+        Account Type:
+        <select name="account_type" id="account_type" required onchange="show_account_type_fields(this.value)">
+            <option value="" disabled selected> Select Account Type </option>
+            <option value="gig_worker"> Worker </option>
+            <option value="employer"> Employer </option>
+        </select><br>
+    
+        <div id="gig_worker_fields" class="hidden">
+            Skills: <input type="text" name="skills"><br>
+            Experience: <input type="text" name="experience"><br>
+            Availability:
+            <select name="availability" id="availability">
+                <option value="weekdays"> Weekdays </option>
+                <option value="weekends"> Weekends </option>
+            </select><br>
+        </div>
+    
+        <button type="submit" id="submit-button"> Sign Up </button>
+    </form>
+    
+    </div>
+
+    <div id="toast-message" class="toast-message"> Sign up successful </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

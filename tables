@@ -1,58 +1,17 @@
 CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  email VARCHAR(100) NOT NULL UNIQUE,
-  account_type ENUM('gig_worker', 'employer') NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    user_type ENUM('employer', 'worker') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE gig_worker (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  skills TEXT,
-  experience TEXT,
-  availability ENUM('Weekdays', 'Weekends') NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE job_category (
-    category_id INT PRIMARY KEY AUTO_INCREMENT,
-    category_name VARCHAR(100) NOT NULL,
-    category_description TEXT
-);
-
-CREATE TABLE job_posting (
-  job_id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  job_title VARCHAR(255) NOT NULL,
-  job_description TEXT NOT NULL,
-  category_id INT,
-  rate DECIMAL(10, 2),
-  start_date DATE,
-  end_date DATE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  job_status VARCHAR(20) DEFAULT 'New',
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (category_id) REFERENCES job_category(category_id)
-);
-
-CREATE TABLE job_application (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  job_id INT NOT NULL,
-  user_id INT NOT NULL,
-  application_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  application_status VARCHAR(20) DEFAULT 'New',
-  FOREIGN KEY (job_id) REFERENCES job_posting(job_id),
-  FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE rating (
-  rating_id INT AUTO_INCREMENT PRIMARY KEY,
-  job_id INT NOT NULL,
-  user_id INT NOT NULL,
-  rating_value ENUM('1_star', '2_stars', '3_stars', '4_stars', '5_stars') NOT NULL,
-  rating_comments TEXT NOT NULL,
-  rating_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (job_id) REFERENCES job_posting(job_id),
-  FOREIGN KEY (user_id) REFERENCES users(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    skills TEXT,
+    experience TEXT,
+    availability VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
