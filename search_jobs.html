@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Jobs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Find a Job</h2>
+    <form id="searchForm" onsubmit="return false;">
+        <input type="text" id="keyword" placeholder="Search by title, category or description">
+        <button type="submit">Search</button>
+    </form>    
+    <div id="results"></div>   
+    
+    <div id="toast" class="toast"></div>
+
+    <script src="search.js"></script>
+</body>
+</html>

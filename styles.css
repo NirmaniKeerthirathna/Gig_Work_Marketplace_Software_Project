@@ -1,133 +1,54 @@
-/* Base Reset & Centering */
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    font-size: 18px;
-    background-color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Centered container with shadow */
-.container {
-    display: flex;
-    width: 80%;
-    max-width: 1000px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.2);
-    overflow: hidden;
-}
-
-/* Sidebar */
-.left-pane {
-    width: 30%;
-    background-color: rgba(158, 159, 243, 0.117);
+    background: white;
     padding: 30px;
-    border-right: 1px solid #d0e0f0;
+    color: #333;
 }
 
-.left-pane h2 {
-    margin-bottom: 30px;
-    color: #0056b3;
-    font-size: 26px;
-    text-align: center;
+form {
+    margin-bottom: 20px;
 }
 
-#sections li {
-    padding: 12px 10px;
-    color: #007bff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#sections li:hover {
-    background-color: #d6e9ff;
-}
-
-#sections li.active {
-    font-weight: bold;
-    background-color: #007bff;
-    color: white;
-}
-
-/* Form content */
-.right-pane {
-    width: 70%;
-    padding: 40px;
-    text-align: left;
-}
-
-.section {
-    display: none;
-}
-
-.section.active {
-    display: block;
-}
-
-/* Inputs & Textareas */
-input[type="text"],
-input[type="date"],
-input[type="number"],
-textarea,
-select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0 20px 0;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+input, button {
+    padding: 10px;
+    margin: 5px 0;
     font-size: 16px;
-    box-sizing: border-box;
-    transition: border 0.3s ease;
+    border-radius: 8px;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-    border: 1px solid #007bff;
-    outline: none;
-}
-
-/* Button styling */
 button {
-    padding: 12px 25px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 30px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-/* Toast styling */
-.toast {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    background-color: #28a745;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease-in-out;
-    z-index: 1000;
+.job {
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* green */
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 9999;
+}
 .toast.show {
     opacity: 1;
-    pointer-events: auto;
 }
 

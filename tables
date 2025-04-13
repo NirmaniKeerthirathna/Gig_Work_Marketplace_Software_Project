@@ -1,11 +1,8 @@
-CREATE TABLE tasks (
+CREATE TABLE applications (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    task_date DATE NOT NULL,
-    location VARCHAR(255) NOT NULL,
-    job_description TEXT NOT NULL,
-    job_category VARCHAR(50) NOT NULL,
-    payment DECIMAL(10,2) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    job_id INT NOT NULL,
+    applicant_email VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    applied_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (job_id) REFERENCES tasks(id) ON DELETE CASCADE
 );
