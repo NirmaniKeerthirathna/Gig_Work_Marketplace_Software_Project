@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div class="right-pane">
-            <form id="taskForm">
+            <form id="taskForm" action="post_job.php" method="POST">
                 <div class="section active" id="title-date">
                     <label for="title">Title:</label>
                     <input type="text" id="title" name="title" required>
@@ -32,8 +32,12 @@
                     <button type="button" onclick="nextSection()">Next</button>
                 </div>
                 <div class="section" id="details">
-                    <label for="details">Details:</label>
-                    <textarea id="details" name="details" required></textarea>
+                    <label for="job_description">Job Description:</label>
+                    <textarea id="job_description" name="job_description" required></textarea>
+                    Job Category: <select name = "job_category">
+                        <option value = "admin"> Admin </option>
+                        <option value = "baby_care"> Baby Care </option>
+                        </select> <br> 
                     <button type="button" onclick="nextSection()">Next</button>
                 </div>
                 <div class="section" id="payment">

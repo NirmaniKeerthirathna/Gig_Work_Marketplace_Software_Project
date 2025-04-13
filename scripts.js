@@ -1,48 +1,48 @@
-// show gig worker related fields, if gig worker account type is selected
-function show_account_type_fields(account_type) 
-    {
-    document.getElementById('gig_worker_fields').style.display = account_type === 'gig_worker' ? 'block' : 'none';
+let currentSection = 0;
+const sections = document.querySelectorAll('.section');
+const sectionTitles = document.querySelectorAll('#sections li');
+
+function nextSection() {
+    sections[currentSection].classList.remove('active');
+    sectionTitles[currentSection].classList.remove('active');
+    currentSection++;
+    if (currentSection < sections.length) {
+        sections[currentSection].classList.add('active');
+        sectionTitles[currentSection].classList.add('active');
     }
+}
 
-document.getElementById('sign-up-form').addEventListener('submit', function(event) 
-    {
-    // prevent form submission without entering data    
-    event.preventDefault(); 
+document.addEventListener('DOMContentLoaded', () => {
+    sections[currentSection].classList.add('active');
+    sectionTitles[currentSection].classList.add('active');
+});
 
-    const form = event.target;
-    const formData = new FormData(form);
+document.getElementById('taskForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    fetch('signup.php', 
-        {
+    const formData = new FormData(this);
+
+    fetch('post_job.php', {
         method: 'POST',
         body: formData
-        })
+    })
     .then(response => response.text())
     .then(data => {
-        if (data.includes("successful")) 
-            {
-            showToast("Sign up successful");
-            form.reset(); // clear the form
-            document.getElementById('gig_worker_fields').style.display = 'none';
-            } 
-        else 
-            {
-            showToast("Error: " + data);
-            }
+        showToast('Task posted successfully!');
+        // Optionally clear form or reset
+        document.getElementById('taskForm').reset();
     })
     .catch(error => {
         console.error('Error:', error);
-        showToast("Something went wrong");
+        showToast('Error posting task.');
     });
 });
 
 function showToast(message) {
-    const toast = document.getElementById('toast-message');
+    const toast = document.getElementById('toast');
     toast.textContent = message;
-    toast.classList.add('show');
-
+    toast.className = 'toast show';
     setTimeout(() => {
-        toast.classList.remove('show');
+        toast.className = toast.className.replace('show', '');
     }, 3000);
 }
-
