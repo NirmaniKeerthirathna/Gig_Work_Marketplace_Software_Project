@@ -28,9 +28,15 @@ document.getElementById('searchForm').addEventListener('submit', function(e) {
                     <p><strong>Category:</strong> ${job.job_category}</p>
                     <p>${job.job_description}</p>
                     <form onsubmit="applyJob(event, ${job.id})">
-                        
+                    <button type="button" onclick="toggleMessageBox(${job.id}, this)">💬 Message</button>
                         <button type="submit">Apply</button>
                     </form>
+
+                    <div class="message-box hidden" id="message-box-${job.id}">
+                <textarea placeholder="Type your message here..." id="message-input-${job.id}"></textarea>
+                <button onclick="sendMessage(${job.id})">Send</button>
+                </div>
+
                     <hr>
                 `;
                 results.appendChild(div);
@@ -96,4 +102,77 @@ function showToast(message) {
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
+}
+
+let currentTaskId = null;
+
+function openMessageBox(taskId) {
+    currentTaskId = taskId;
+    document.getElementById('messageModal').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('messageModal').classList.add('hidden');
+}
+
+function sendMessage() {
+    const message = document.getElementById('messageInput').value;
+
+    if (!message.trim()) {
+        showToast("Please enter a message.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('task_id', currentTaskId);
+    formData.append('message', message);
+
+    fetch('../message/send_message.php', {
+        method: 'POST',
+        body: formData
+    }).then(res => res.text())
+      .then(response => {
+          showToast(response);
+          document.getElementById('messageInput').value = '';
+          closeModal();
+      })
+      .catch(err => {
+          console.error("Error sending message:", err);
+          showToast("Failed to send message.");
+      });
+}
+
+function toggleMessageBox(taskId, button) {
+    // Hide all other message boxes
+    document.querySelectorAll('.message-box').forEach(box => box.classList.add('hidden'));
+    // Show only the selected one
+    document.getElementById(`message-box-${taskId}`).classList.toggle('hidden');
+}
+
+function sendMessage(taskId) {
+    const message = document.getElementById(`message-input-${taskId}`).value.trim();
+
+    if (!message) {
+        showToast("Please enter a message.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('task_id', taskId);
+    formData.append('message', message);
+
+    fetch('../message/send_message.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.text())
+    .then(response => {
+        showToast(response);
+        document.getElementById(`message-input-${taskId}`).value = '';
+        document.getElementById(`message-box-${taskId}`).classList.add('hidden');
+    })
+    .catch(err => {
+        console.error("Error sending message:", err);
+        showToast("Failed to send message.");
+    });
 }
