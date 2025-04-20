@@ -1,8 +1,10 @@
 <?php
 session_start();
 
+header('Content-Type: application/json');
+
 if (!isset($_SESSION['user_id'])) {
-    echo "You must be logged in to post a job.";
+    echo json_encode(['status' => 'error', 'message' => 'You must be logged in to post a job.']);
     exit;
 }
 
@@ -33,9 +35,9 @@ try {
         ':user_id'         => $_SESSION['user_id'],
     ]);
 
-    echo "success";
+    echo json_encode(['status' => 'success', 'message' => 'Task posted successfully']);
 
 } catch (PDOException $e) {
-    echo "Database error: " . $e->getMessage();
+    echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
 }
 ?>

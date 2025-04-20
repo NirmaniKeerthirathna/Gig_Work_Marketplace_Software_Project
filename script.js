@@ -12,11 +12,19 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     .then(data => {
         if (data.status === 'success') {
             showToast("Login successful");
-            // Optionally redirect:
-            // window.location.href = "dashboard.html";
-        } else {
-            showToast("Error: " + data.message);
-        }
+        
+            // Check if we were redirected here with a return path
+            const params = new URLSearchParams(window.location.search);
+            const returnPage = params.get('return');
+        
+            setTimeout(() => {
+                if (returnPage === 'post_job') {
+                    window.location.href = '../post_job/post_job.html';
+                } else {
+                    window.location.href = 'dashboard.html'; // or some default
+                }
+            }, 2000);
+        }        
     })
     .catch(error => {
         console.error(error);
