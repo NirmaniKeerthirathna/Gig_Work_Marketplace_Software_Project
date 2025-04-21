@@ -1,0 +1,108 @@
+body {
+font-family: Arial, sans-serif;
+background-color: #f0f4f8;
+margin: 0;
+padding: 0;
+}
+  
+.page-heading {
+text-align: center;
+font-size: 32px;
+margin: 40px 0 20px;
+color: #007BFF;
+position: relative;
+}
+
+.page-heading::after {
+content: '';
+display: block;
+width: 60px;
+height: 4px;
+background: linear-gradient(to right, #007BFF, #00C6FF);
+margin: 12px auto 0;
+border-radius: 2px;
+}
+
+.profiles-container {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+padding: 20px;
+justify-content: center;
+}
+
+.job-card {
+width: 320px;
+background: white;
+border-radius: 16px;
+padding: 20px;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+transition: transform 0.2s ease;
+}
+
+.job-card:hover {
+transform: translateY(-4px);
+}
+
+.job-card h3 {
+color: #007BFF;
+margin: 0 0 10px;
+}
+
+.job-card p {
+margin: 6px 0;
+color: #333;
+font-size: 14px;
+}
+
+.status-label {
+margin-top: 10px;
+font-weight: bold;
+color: #333;
+}
+
+.status-select {
+width: 100%;
+padding: 8px;
+margin-top: 5px;
+border-radius: 8px;
+border: 1px solid #ccc;
+font-size: 14px;
+}
+
+.toast {
+position: fixed;
+top: 20px;
+right: 20px;
+background-color: #28a745;
+color: white;
+text-align: center;
+border-radius: 8px;
+padding: 16px 24px;
+font-size: 16px;
+z-index: 9999;
+opacity: 0;
+transition: opacity 0.4s ease;
+pointer-events: none;
+}
+
+.toast.show {
+opacity: 1;
+}
+
+.applications-container {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .application-card {
+    background: #fff;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  

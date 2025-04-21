@@ -45,7 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                            VALUES ('$user_id', '$skills', '$experience', '$availability')";
 
             if ($conn->query($worker_sql)) {
-                echo "Sign up successful";
+                // Also insert into profiles table
+                $full_name = $first_name . ' ' . $last_name;
+                $profile_sql = "INSERT INTO profiles (user_id, name, skills, experience) 
+                                VALUES ('$user_id', '$full_name', '$skills', '$experience')";
+
+                if ($conn->query($profile_sql)) {
+                    echo "Sign up successful";
+                } else {
+                    echo "Profile Info Error: " . $conn->error;
+                }
             } else {
                 echo "Worker Info Error: " . $conn->error;
             }

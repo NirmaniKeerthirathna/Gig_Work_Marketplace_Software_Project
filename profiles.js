@@ -16,18 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
           card.classList.add('profile-card');
   
           card.innerHTML = `
-  <h3>${profile.name}</h3>
-  <p><strong>Skills:</strong> ${profile.skills}</p>
-  <p><strong>Experience:</strong> ${profile.experience}</p>
-  <div class="rating" data-worker-id="${profile.user_id}">
-    ${getStarHTML(profile.average_rating)}
-    <small>(${parseFloat(profile.average_rating).toFixed(1)} from ${profile.total_ratings} ratings)</small>
-  </div>
-  <textarea class="comment-box" rows="2" placeholder="Leave a comment..."></textarea>
-  <button class="submit-rating">Submit</button>
-`;
+            <h3>${profile.name}</h3>
+            <p><strong>Skills:</strong> ${profile.skills}</p>
+            <p><strong>Experience:</strong> ${profile.experience}</p>
+            <div class="rating" data-worker-id="${profile.user_id}">
+              ${getStarHTML(profile.average_rating)}
+              <small>(${parseFloat(profile.average_rating).toFixed(1)} from ${profile.total_ratings} ratings)</small>
+            </div>
+            <textarea class="comment-box" rows="2" placeholder="Leave a comment..."></textarea>
+            <button class="submit-rating">Submit</button>
+          `;
 
-  
           const stars = card.querySelectorAll('.star');
           const ratingContainer = card.querySelector('.rating');
           const commentBox = card.querySelector('.comment-box');

@@ -12,19 +12,23 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     .then(data => {
         if (data.status === 'success') {
             showToast("Login successful");
-        
-            // Check if we were redirected here with a return path
+
+            // Get return URL from query string (if any)
             const params = new URLSearchParams(window.location.search);
             const returnPage = params.get('return');
-        
+
             setTimeout(() => {
-                if (returnPage === 'post_job') {
-                    window.location.href = '../post_job/post_job.html';
+                if (returnPage) {
+                    // Redirect back to the original page
+                    window.location.href = decodeURIComponent(returnPage);
                 } else {
-                    window.location.href = 'dashboard.html'; // or some default
+                    // Fallback redirect (e.g., homepage or explore page)
+                    window.location.href = '../index/index.php';
                 }
             }, 2000);
-        }        
+        } else {
+            showToast(data.message || "Login failed");
+        }
     })
     .catch(error => {
         console.error(error);
@@ -41,5 +45,3 @@ function showToast(message) {
         toast.classList.remove('show');
     }, 3000);
 }
-
-  

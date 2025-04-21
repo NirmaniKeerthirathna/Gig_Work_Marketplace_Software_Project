@@ -20,11 +20,11 @@ nav ul {
     width: 100%;
   }
   
-nav ul li {
-    margin: 15px;
-    display: inline;
-    justify-content: space-around;
-  }
+nav > ul > li {
+  margin: 15px;
+  display: inline-block;
+  justify-content: space-around;
+}  
   
 nav ul li a {
     color: #fff;
@@ -70,198 +70,143 @@ nav hr {
     max-width: 100%;
     border-radius: 10px;
   }
-
-.sign-up-container, .log-in-container {
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-size: medium;
-}
-
-.post-job-container {
-  display: flex;
-}
-
+  
 h2 {
   margin-bottom: 20px;
   font-size: 24px;
 }
 
-form {
+#notifBtn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#notifDropdown {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 320px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#notifList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
-input, select {
-  margin-bottom: 10px;
+#notifList li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #f1f1f1;
+  border-left: 4px solid #007bff;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 18px;
 }
 
-.gig_worker_fields {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 18px;
-}
-
-.left-pane {
-  width: 25%;
-  background-color: #f0f0f0;
-  padding: 20px;
-}
-
-.left-pane ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.left-pane li {
-  padding: 10px;
-  color: blue;
-}
-
-.left-pane li.active {
+#notifList li strong {
   font-weight: bold;
+  margin-bottom: 4px;
 }
 
-.right-pane {
-  width: 75%;
-  padding: 20px;
+#notifList li small {
+  color: #666;
+  font-size: 12px;
 }
 
-.sections {
-  display: none;
-}
-
-.sections.active {
-  display: block;
-}
-
-button {
-  padding: 10px;
-  background-color: #007bff; 
+#notifList li button {
+  align-self: flex-end;
+  margin-top: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
 }
 
-button:hover {
+#notifList li button:hover {
   background-color: #0056b3;
 }
 
-.toast-message {
-  visibility: hidden;
-  min-width: 250px;
-  margin-top: 20px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  padding: 10px;
+.notification-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.notif-item {
+  cursor: pointer;
+}
+.notif-item.read {
+  opacity: 0.6;
+}
+
+#notifDropdown li p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Modal container */
+.modal {
+  display: flex; /* Or block */
   position: fixed;
-  z-index: 1;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18px;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Black with opacity */
+  justify-content: center;
+  align-items: center;
 }
 
-.toast-message.show {
-  visibility: visible;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+/* Modal content box */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+/* Close button */
+.close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
+/* Hide modal initially */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-  .input-box {
-    margin-bottom: 15px;
-  }
-  
-  .input-box input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .input-box input::placeholder {
-    color: #999;
-  }
-  
-
-  .search-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .apply-for-job-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-.workers_list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+/* Dot for unread */
+.unread-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  margin-left: 5px;
 }
-
-.worker_card {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-}
-
-.rating {
-    display: flex;
-    justify-content: center;
-}
-
-.star {
-    font-size: 24px;
-    color: #ccc;
-    cursor: pointer;
-}
-
-.star.filled {
-    color: gold;
-}
-
-.comment {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
- 
-  

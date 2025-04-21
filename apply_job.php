@@ -47,7 +47,8 @@ if ($check->num_rows > 0) {
 }
 
 // Insert application
-$stmt = $conn->prepare("INSERT INTO applications (user_id, task_id) VALUES (?, ?)");
+// Insert application with default status
+$stmt = $conn->prepare("INSERT INTO applications (user_id, task_id, status) VALUES (?, ?, 'Applications Received')");
 if (!$stmt) {
     echo json_encode(['status' => 'error', 'message' => 'Prepare failed: ' . $conn->error]);
     exit;
