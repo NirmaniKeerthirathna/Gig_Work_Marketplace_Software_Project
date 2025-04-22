@@ -17,10 +17,11 @@ $isLoggedIn = isset($_SESSION['user_id']);
       <li><a href="../post_job/post_job.html">Post a Job</a></li>
       <li><a href="categories.php">Categories</a></li>
       <li><a href="../search_jobs/search_jobs.html">Browse Jobs</a></li>
-      <li><a href="workers_list.php">Reviews</a></li>
+      <li><a href="../reviews/profiles.html">Reviews</a></li>
 
       <?php if ($isLoggedIn): ?>
         <li><a href="../manage_jobs/my_jobs.html">Manage Jobs</a></li>
+        <li><a href="../applications/my_applications.php">My Applications</a></li>
         <li><a href="../log_out/logout.php">Log Out</a></li>
       <?php else: ?>
         <li><a href="../log_in/login.html">Log In</a></li>
