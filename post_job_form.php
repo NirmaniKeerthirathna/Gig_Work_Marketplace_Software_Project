@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Post a Task </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <?php include '../header/header.php'; ?>
+    <div class="container">
+        <div class="left-pane">
+            <h2>Post a Task</h2>
+            <ul id="sections">
+                <li class="active">Title & Date</li>
+                <li>Location</li>
+                <li>Details</li>
+                <li>Payment</li>
+            </ul>
+        </div>
+        <div class="right-pane">
+            <form id="taskForm" action="post_job.php" method="POST">
+                <div class="section active" id="title-date">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                    <button type="button" onclick="nextSection()">Next</button>
+                </div>
+                <div class="section" id="location">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                    <button type="button" onclick="nextSection()">Next</button>
+                </div>
+                <div class="section" id="details">
+                    <label for="job_description">Job Description:</label>
+                    <textarea id="job_description" name="job_description" required></textarea>
+                    Job Category: <select name = "job_category">
+                        <option value = "admin"> Admin </option>
+                        <option value = "baby_care"> Baby Care </option>
+                        </select> <br> 
+                    <button type="button" onclick="nextSection()">Next</button>
+                </div>
+                <div class="section" id="payment">
+                    <label for="payment">Payment:</label>
+                    <input type="number" id="payment" name="payment" required>
+                    <button type="submit">Post Job</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toast" class="toast">Task posted successfully!</div>
+    <script src="scripts.js"></script>
+</body>
+</html>
