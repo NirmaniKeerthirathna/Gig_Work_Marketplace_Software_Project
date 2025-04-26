@@ -62,8 +62,14 @@ function applyJob(event, taskId) {
     })
     .then(res => res.json())
     .then(response => {
-        console.log("Apply response:", response); // for debugging
+        console.log("Apply response:", response); 
         showToast(response.message);
+
+        if (response.status === 'success') {
+            setTimeout(() => {
+                window.location.href = '../index/index.php'; 
+            }, 2000); 
+        }
     })
     .catch(error => {
         console.error("Failed to parse response:", error);

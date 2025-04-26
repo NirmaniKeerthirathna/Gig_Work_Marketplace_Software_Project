@@ -23,7 +23,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
       <ul class="nav-links left-nav">
         <li><a href="../post_job/post_job_form.php">Post a Job</a></li>
         <li><a href="categories.php">Categories</a></li>
-        <li><a href="../search_jobs/search_jobs.html">Browse Jobs</a></li>
+        <li><a href="../search_jobs/search_jobs_form.php">Browse Jobs</a></li>
         <li><a href="../reviews/profiles.html">Reviews</a></li>
         <?php if ($isLoggedIn): ?>
           <li><a href="../manage_jobs/my_jobs.html">Manage Jobs</a></li>
@@ -62,7 +62,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
   <div class="tagline-buttons">
     <a href="../post_job/post_job_form.php" class="tag-btn">Post jobs for free</a>
-    <a href="../search_jobs/search_jobs.html" class="tag-btn">Find jobs to earn money</a>
+    <a href="../search_jobs/search_jobs_form.php" class="tag-btn">Find jobs to earn money</a>
   </div>
 </div>
 
