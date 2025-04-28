@@ -8,9 +8,10 @@ $password = "";
 $dbname = "worknet";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
+if ($conn->connect_error) 
+    {
     die("Connection failed: " . $conn->connect_error);
-}
+    }
 
 $query = $conn->prepare("
     SELECT p.user_id, p.name, p.skills, p.experience, 
@@ -21,17 +22,19 @@ $query = $conn->prepare("
     GROUP BY p.user_id
 ");
 
-if (!$query) {
+if (!$query) 
+    {
     die("Query error: " . $conn->error);
-}
+    }
 
 $query->execute();
 $result = $query->get_result();
 
 $profiles = [];
-while ($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) 
+    {
     $profiles[] = $row;
-}
+    }
 
 header('Content-Type: application/json');
 echo json_encode($profiles);

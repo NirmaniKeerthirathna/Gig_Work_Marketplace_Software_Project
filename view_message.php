@@ -2,27 +2,27 @@
 session_start();
 $mysqli = new mysqli("localhost", "root", "", "worknet");
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) 
+    {
     header("Location: ../log_in/login.html");
     exit;
-}
+    }
 
 $message_id = $_GET['id'];
 $current_user_id = $_SESSION['user_id'];
 
-// Get original message
 $stmt = $mysqli->prepare("SELECT m.*, u.email as sender_email FROM messages m JOIN users u ON m.sender_id = u.id WHERE m.id = ?");
 $stmt->bind_param("i", $message_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $message = $result->fetch_assoc();
 
-if (!$message) {
+if (!$message) 
+    {
     echo "Message not found.";
     exit;
-}
+    }
 
-// Get replies (if any)
 $task_id = $message['task_id'];
 $other_user_id = $message['sender_id'];
 
@@ -35,9 +35,10 @@ $repliesStmt = $mysqli->prepare("
     ORDER BY m.sent_at ASC
 ");
 
-if (!$repliesStmt) {
+if (!$repliesStmt) 
+    {
     die("Prepare failed: " . $mysqli->error);
-}
+    }
 
 $repliesStmt->bind_param("iiiii", $task_id, $current_user_id, $other_user_id, $other_user_id, $current_user_id);
 $repliesStmt->execute();
@@ -47,11 +48,11 @@ $replies = $repliesStmt->get_result();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Message Thread</title>
+    <title> Message Thread </title>
     <link rel="stylesheet" href="message_thread.css">
 </head>
 <body>
-    <h2>Chat with <?php echo htmlspecialchars($message['sender_email']); ?></h2>
+    <h2> Chat with <?php echo htmlspecialchars($message['sender_email']); ?></h2>
 
     <div class="message-container" style="display: flex; flex-direction: column;">
     <div class="message-thread">

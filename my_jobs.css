@@ -98,11 +98,10 @@ opacity: 1;
     border-radius: 8px;
   }
   
-  .application-card {
-    background: #fff;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  
+.application-card {
+  background: #fff;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+} 

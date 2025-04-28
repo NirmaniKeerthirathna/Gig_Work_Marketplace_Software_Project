@@ -2,16 +2,18 @@
 session_start();
 header('Content-Type: application/json');
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) 
+    {
     echo json_encode(['status' => 'error', 'message' => 'You must be logged in.']);
     exit;
-}
+    }
 
 $conn = new mysqli("localhost", "root", "", "worknet");
-if ($conn->connect_error) {
+if ($conn->connect_error) 
+    {
     echo json_encode(['status' => 'error', 'message' => 'Database connection failed.']);
     exit;
-}
+    }
 
 $user_id = $_SESSION['user_id'];
 
@@ -24,9 +26,9 @@ $result = $conn->query("
 ");
 
 $jobs = [];
-while ($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) 
+    {
     $jobs[] = $row;
-}
-
+    }
 echo json_encode(['status' => 'success', 'jobs' => $jobs]);
 ?>

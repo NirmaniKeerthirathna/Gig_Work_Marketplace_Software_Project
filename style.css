@@ -15,7 +15,7 @@ nav {
   z-index: 1000;
 }
 
-.navbar-container {
+.navigation-container {
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -2,11 +2,12 @@
 session_start();
 $mysqli = new mysqli("localhost", "root", "", "worknet");
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) 
+    {
     http_response_code(403);
     echo "Not logged in";
     exit;
-}
+    }
 
 $notif_id = $_POST['notification_id'] ?? null;
 $user_id = $_SESSION['user_id'];

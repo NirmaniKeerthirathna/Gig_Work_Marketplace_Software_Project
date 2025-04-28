@@ -1,47 +1,52 @@
-document.getElementById('login-form').addEventListener('submit', function(event) {
+document.getElementById('login-form').addEventListener('submit', function(event) 
+    {
     event.preventDefault();
 
-    const form = event.target;
-    const formData = new FormData(form);
+    const log_in_form = event.target;
+    const log_in_form_data = new FormData(log_in_form);
 
     fetch('login.php', {
         method: 'POST',
-        body: formData
-    })
+        body: log_in_form_data
+        })
     .then(res => res.json())
     .then(data => {
-        if (data.status === 'success') {
-            showToast("Login successful");
+        if (data.status === 'success') 
+            {
+            show_toast_message("Login successful");
 
-            // Get return URL from query string (if any)
             const params = new URLSearchParams(window.location.search);
             const returnPage = params.get('return');
 
             setTimeout(() => {
-                if (returnPage) {
-                    // Redirect back to the original page
+                if (returnPage) 
+                    {
                     window.location.href = decodeURIComponent(returnPage);
-                } else {
-                    // Fallback redirect (e.g., homepage or explore page)
+                    } 
+                else 
+                    {
                     window.location.href = '../index/index.php';
-                }
+                    }
             }, 2000);
-        } else {
-            showToast(data.message || "Login failed");
-        }
-    })
+            } 
+        else 
+            {
+            show_toast_message(data.message || "Login failed");
+            }
+        })
     .catch(error => {
         console.error(error);
-        showToast("An unexpected error occurred.");
+        show_toast_message("An unexpected error occurred.");
     });
 });
 
-function showToast(message) {
+function show_toast_message(message) 
+    {
     const toast = document.getElementById('toast-message');
     toast.textContent = message;
     toast.classList.add('show');
 
     setTimeout(() => {
         toast.classList.remove('show');
-    }, 3000);
-}
+        }, 3000);
+    }

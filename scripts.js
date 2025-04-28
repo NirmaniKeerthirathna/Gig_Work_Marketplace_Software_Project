@@ -1,59 +1,58 @@
-let currentSection = 0;
-const sections = document.querySelectorAll('.section');
-const sectionTitles = document.querySelectorAll('#sections li');
+//Show gig worker fields, if gig worker opens the page
+function show_account_type_fields(account_type) 
+    {
+    const gigWorkerFields = document.getElementById('gig_worker_fields');
+    const gigWorkerNameFields = document.getElementById('gig_worker_name_fields');
+    const employerNameField = document.getElementById('employer_name_field');
 
-function nextSection() {
-    sections[currentSection].classList.remove('active');
-    sectionTitles[currentSection].classList.remove('active');
-    currentSection++;
-    if (currentSection < sections.length) {
-        sections[currentSection].classList.add('active');
-        sectionTitles[currentSection].classList.add('active');
+    gigWorkerFields.style.display = account_type === 'gig_worker' ? 'block' : 'none';
+    gigWorkerNameFields.style.display = account_type === 'gig_worker' ? 'block' : 'none';
+    employerNameField.style.display = account_type === 'employer' ? 'block' : 'none';
+
+    document.querySelector('input[name="first_name"]').required = account_type === 'gig_worker';
+    document.querySelector('input[name="last_name"]').required = account_type === 'gig_worker';
+    document.querySelector('input[name="employer_name"]').required = account_type === 'employer';
     }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-    sections[currentSection].classList.add('active');
-    sectionTitles[currentSection].classList.add('active');
-});
+//Save user details in the users and gig_worker tables
+document.getElementById('sign-up-form').addEventListener('submit', function(event) 
+    {    
+    event.preventDefault(); 
 
-document.getElementById('taskForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+    const sign_up_form = event.target;
+    const sign_up_form_data = new FormData(sign_up_form);
 
-    const formData = new FormData(this);
-
-    fetch('post_job.php', {
+    fetch('signup.php', 
+        {
         method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
+        body: sign_up_form_data
+        })
+    .then(response => response.text())
     .then(data => {
-        showToast(data.message, data.status === 'error');
-    
-        if (data.status === 'success') {
-            document.getElementById('taskForm').reset();
-        } else if (data.message.includes("logged in")) {
-            // Redirect after showing toast
-            setTimeout(() => {
-                window.location.href = '../log_in/login.html?return=post_job';
-            }, 3000); // wait 3 seconds before redirect
-        }
-    })    
+        if (data.includes("successful")) 
+            {
+            show_toast_message("Sign up successful");
+            sign_up_form.reset();
+            document.getElementById('gig_worker_fields').style.display = 'none';
+            } 
+        else 
+            {
+            show_toast_message("Error: " + data);
+            }
+        })
     .catch(error => {
         console.error('Error:', error);
-        showToast('Something went wrong. Please try again.');
+        show_toast_message("Something went wrong");
+        });
     });
-});
 
-function showToast(message, isError = false) {
-    const toast = document.getElementById('toast');
+function show_toast_message(message) 
+    {
+    const toast = document.getElementById('toast-message');
     toast.textContent = message;
-    toast.className = 'toast show';
-
-    // Set color based on type
-    toast.style.backgroundColor = isError ? '#dc3545' : '#28a745'; // red for error, green for success
+    toast.classList.add('show');
 
     setTimeout(() => {
-        toast.className = toast.className.replace('show', '');
-    }, 3000);
-}
+        toast.classList.remove('show');
+        }, 3000);
+    }

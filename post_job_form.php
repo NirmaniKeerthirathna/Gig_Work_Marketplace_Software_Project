@@ -34,8 +34,8 @@
                 </div>
                 <div class="section" id="details">
                     <label for="job_description">Job Description:</label>
-                    <textarea id="job_description" name="job_description" required></textarea>
-                    Job Category: <select name = "job_category">
+                    <textarea id="job_description" name="job_description"></textarea>
+                    Job Category: <select id="job_category" name = "job_category" required>
                         <option value = "admin"> Admin </option>
                         <option value = "baby_care"> Baby Care </option>
                         </select> <br> 

@@ -8,11 +8,12 @@ $isLoggedIn = isset($_SESSION['user_id']);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WorkNet</title>
-  <link rel="stylesheet" href="../header/style.css" />
+  <title> WorkNet </title>
+  <link rel="stylesheet" href="../header/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
   <nav>
     <div class="navbar-container">
@@ -23,8 +24,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
       <ul class="nav-links left-nav">
         <li><a href="../post_job/post_job_form.php">Post a Job</a></li>
         <li><a href="categories.php">Categories</a></li>
-        <li><a href="../search_jobs/search_jobs.html">Browse Jobs</a></li>
-        <li><a href="../reviews/profiles.html">Reviews</a></li>
+        <li><a href="../search_jobs/search_jobs_form.php">Browse Jobs</a></li>
+        <li><a href="../reviews/profiles.php">Reviews</a></li>
         <?php if ($isLoggedIn): ?>
           <li><a href="../manage_jobs/my_jobs.html">Manage Jobs</a></li>
           <li><a href="../applications/my_applications.php">My Applications</a></li>
@@ -43,8 +44,5 @@ $isLoggedIn = isset($_SESSION['user_id']);
       </div>
     </div>
   </nav>
-
-    <script src="../notifications/notifications.js"></script>
-
 </body>
 </html>

@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
     btn.addEventListener('click', fetchNotifications);
   
-    function fetchNotifications() {
+    function fetchNotifications() 
+      {
       fetch('../notifications/get_notifications.php')
         .then(res => res.json())
         .then(data => {
@@ -46,16 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
                   openModal(n.title, n.message);
                   markRead(n.id);
                 }
-              });
-              
+              });          
           });
   
           document.getElementById('notifCount').textContent = unread;
           document.getElementById('notifDropdown').classList.toggle('hidden');
         });
-    }
+      }
   
-    function markRead(id) {
+    function markRead(id) 
+      {
       const formData = new FormData();
       formData.append('notification_id', id);
   
@@ -63,15 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         body: formData
       }).then(() => fetchNotifications());
-    }
+      }
   
-    function openModal(title, message) {
+    function openModal(title, message) 
+      {
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('modalMessage').textContent = message;
       modal.classList.remove('hidden');
-    }
+      }
   
-    // Close modal
     closeBtn.addEventListener('click', () => {
       modal.classList.add('hidden');
     });
@@ -83,17 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // Dropdown outside click
   document.addEventListener('click', (e) => {
     const notifDropdown = document.getElementById('notifDropdown');
     const notifBtn = document.getElementById('notifBtn');
   
-    if (!notifDropdown.contains(e.target) && !notifBtn.contains(e.target)) {
+    if (!notifDropdown.contains(e.target) && !notifBtn.contains(e.target)) 
+      {
       notifDropdown.classList.add('hidden');
-    }
+      }
   });  
 
   li.addEventListener('click', () => {
     window.location.href = `../message/view_message.php?id=${n.message_id}`;
-  });
-  
+  }); 

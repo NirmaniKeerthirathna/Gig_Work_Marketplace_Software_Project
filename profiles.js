@@ -1,4 +1,5 @@
-function getStarHTML(average) {
+function getStarHTML(average) 
+  {
     const rounded = Math.round(average);
     return [1, 2, 3, 4, 5].map(i =>
       `<span class="star ${i <= rounded ? 'filled' : ''}" data-value="${i}">&#9733;</span>`
@@ -17,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
           card.innerHTML = `
             <h3>${profile.name}</h3>
-            <p><strong>Skills:</strong> ${profile.skills}</p>
-            <p><strong>Experience:</strong> ${profile.experience}</p>
+            <p><strong> Skills: </strong> ${profile.skills}</p>
+            <p><strong> Experience: </strong> ${profile.experience}</p>
             <div class="rating" data-worker-id="${profile.user_id}">
               ${getStarHTML(profile.average_rating)}
               <small>(${parseFloat(profile.average_rating).toFixed(1)} from ${profile.total_ratings} ratings)</small>
@@ -35,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
           stars.forEach(star => {
             const value = parseInt(star.getAttribute('data-value'));
   
-            // Hover effect
             star.addEventListener('mouseenter', () => {
               stars.forEach(s => {
                 const sValue = parseInt(s.getAttribute('data-value'));
@@ -43,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
               });
             });
   
-            // Remove hover effect
             star.addEventListener('mouseleave', () => {
               stars.forEach(s => s.classList.remove('hovered'));
             });
   
-            // Click to fill stars
             star.addEventListener('click', () => {
               stars.forEach(s => {
                 const sValue = parseInt(s.getAttribute('data-value'));
@@ -57,26 +55,26 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           });
   
-          // Submit rating & comment
           submitBtn.addEventListener('click', () => {
             const workerId = ratingContainer.getAttribute('data-worker-id');
             const selectedRating = [...stars].filter(s => s.classList.contains('filled')).length;
             const comment = commentBox.value.trim();
   
-            if (selectedRating === 0) {
+            if (selectedRating === 0) 
+              {
               alert("Please select a star rating.");
               return;
-            }
+              }
   
             submitRating(workerId, selectedRating, comment);
           });
-  
           container.appendChild(card);
         });
       });
   });
   
-  function submitRating(workerId, rating, comment) {
+  function submitRating(workerId, rating, comment) 
+    {
     fetch('submit_rating.php', {
         method: 'POST',
         headers: {
@@ -87,29 +85,27 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.text())
     .then(data => {
         console.log('Server Response:', data);
-        showToast(data); // Show toast
+        showToast(data);
     
         const toast = document.getElementById('toast');
         console.log('Toast Element:', toast);
         console.log('Toast Class Before:', toast.className);
-        
-        // location.reload(); // Commented out to test
     })    
     .catch(err => {
-        showToast("Something went wrong. Please try again."); // Show error toast
+        showToast("Something went wrong. Please try again."); 
         console.error('Rating failed:', err);
-    });    
-}
+      });    
+    }
   
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    console.log("Toast found in showToast:", toast); // Debug
-  
-    toast.textContent = message;
-    toast.className = "toast show";
-  
-    setTimeout(() => {
-      toast.className = "toast";
+function showToast(message) 
+  {
+  const toast = document.getElementById('toast');
+  console.log("Toast found in showToast:", toast); 
+
+  toast.textContent = message;
+  toast.className = "toast show";
+
+  setTimeout(() => {
+    toast.className = "toast";
     }, 3000);
-  }  
-  
+  }   
